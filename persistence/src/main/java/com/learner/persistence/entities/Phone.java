@@ -15,11 +15,7 @@ public class Phone {
 	private PhoneNumberType phoneNumberType;
 
 	public Phone(final int countryCode, final int areaCode, final int number) {
-		id = UUID.randomUUID().toString();
-		this.countryCode = countryCode;
-		this.areaCode = areaCode;
-		this.number = number;
-		phoneNumberType = PhoneNumberType.HOME;
+		this(countryCode, areaCode, number, PhoneNumberType.HOME);
 	}
 
 	public Phone(final int countryCode, final int areaCode, final int number,

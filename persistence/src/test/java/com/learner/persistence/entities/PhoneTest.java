@@ -23,7 +23,7 @@ public class PhoneTest {
 	public void testAddPhone() {
 		final Phone phone;
 		{
-			phone = new Phone(1, 650, 2345);
+			phone = new Phone(1, 650, 2345678);
 			crudService.create(phone);
 			jpaRule.changeTransaction();
 		}
@@ -32,6 +32,5 @@ public class PhoneTest {
 			assertNotNull(phoneInDb);
 			assertEquals(phone, phoneInDb);
 		}
-
 	}
 }
