@@ -3,6 +3,7 @@ package com.learner.business.manager;
 import com.learner.business.presentation.UserPresentation;
 import com.learner.persistence.entities.AbstractUnitTest;
 import com.learner.persistence.entities.Address;
+import com.learner.persistence.entities.Phone;
 import com.learner.persistence.entities.User;
 import org.junit.Test;
 
@@ -35,5 +36,26 @@ public class UserManagerTest extends AbstractUnitTest {
         assertEquals(steveJobs.getAddresses().get(0).getState(), userPresentationsByState.get(0).getAddressPresentations().get(0).getState());
         assertEquals(steveJobs.getAddresses().get(0).getZip(), userPresentationsByState.get(0).getAddressPresentations().get(0).getZip());
         assertEquals(steveJobs.getAddresses().get(0).getCountry(), userPresentationsByState.get(0).getAddressPresentations().get(0).getCountry());
+    }
+
+    @Test
+    public void testGetUserPresentationsByPhoneAreaCode() {
+        final User steveJobs;
+        {
+            final Phone phone = new Phone(1, 650, 2345678);
+            crudService.create(phone);
+            jpaRule.changeTransaction();
+
+            steveJobs = new User("Steve", "Jobs");
+            steveJobs.addPhone(phone);
+            crudService.create(steveJobs);
+            jpaRule.changeTransaction();
+        }
+
+        final List<UserPresentation> userPresentationsByPhoneAreaCode = new UserManager(crudService).getUsersByPhoneAreaCode(650);
+        assertEquals("1 user must be present in by phone area code", 1, userPresentationsByPhoneAreaCode.size());
+        assertEquals(steveJobs.getFirstName(), userPresentationsByPhoneAreaCode.get(0).getFirstName());
+        assertEquals(steveJobs.getLastName(), userPresentationsByPhoneAreaCode.get(0).getLastName());
+        assertEquals(steveJobs.getPhones().get(0).getId(), userPresentationsByPhoneAreaCode.get(0).getPhonePresentations().get(0).getId());
     }
 }

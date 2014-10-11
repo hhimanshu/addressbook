@@ -15,7 +15,7 @@ public class PhonePresentation {
         final StringBuilder phoneFormatBuilder = new StringBuilder();
 
         // build country code
-        phoneFormatBuilder.append("(+ ");
+        phoneFormatBuilder.append("(+");
         phoneFormatBuilder.append(phone.getCountryCode());
         phoneFormatBuilder.append(") ");
 
@@ -34,6 +34,16 @@ public class PhonePresentation {
     @Nonnull
     public static List<PhonePresentation> getPhonePresentations(@Nonnull final List<Phone> phones) {
         return phones.stream().map(PhonePresentation::new).collect(Collectors.toList());
+    }
+
+    @Nonnull
+    public String getId() {
+        return id;
+    }
+
+    @Nonnull
+    public String getPhoneFormat() {
+        return phoneFormat;
     }
 
     @Override
