@@ -10,6 +10,7 @@
 	<modules>
 		<module>persistence</module>
 		<module>business</module>
+		<module>services</module>
 	</modules>
 
 	<properties>
