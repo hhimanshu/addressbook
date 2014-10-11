@@ -2,6 +2,7 @@ package com.learner.persistence;
 
 import com.learner.persistence.configuration.CrudService;
 import com.learner.persistence.entities.QAddress;
+import com.learner.persistence.entities.QPhone;
 import com.learner.persistence.entities.QUser;
 import com.learner.persistence.entities.User;
 
@@ -13,6 +14,8 @@ import java.util.List;
 public class UserQueries {
 	private static final QUser user = QUser.user;
 	private static final QAddress address = QAddress.address;
+	private static final QPhone phone = QPhone.phone;
+
 	private final CrudService crudService;
 
 	@Inject
@@ -28,5 +31,10 @@ public class UserQueries {
 	@Nonnull
 	public List<User> getUserByState(@Nonnull final String state) {
 		return crudService.query(user).innerJoin(user.addresses, address).where(address.state.eq(state)).list(user);
+	}
+
+	@Nonnull
+	public List<User> getUserByPhoneAreaCode(final int areaCode) {
+		return crudService.query(user).innerJoin(user.phones, phone).where(phone.areaCode.eq(areaCode)).list(user);
 	}
 }
