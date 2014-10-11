@@ -96,7 +96,7 @@
 				<configuration>
 					<sortProperties>true</sortProperties>
 					<createBackupFile>false</createBackupFile>
-					<nrOfIndentSpace>4</nrOfIndentSpace>
+					<nrOfIndentSpace>-1</nrOfIndentSpace>
 					<keepBlankLines>true</keepBlankLines>
 				</configuration>
 			</plugin>
