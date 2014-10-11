@@ -5,8 +5,12 @@
 	<groupId>com.learner</groupId>
 	<artifactId>addressbook</artifactId>
 	<version>1.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
 	<name>AddressBook</name>
 	<description>Home for all your contacts</description>
+	<modules>
+		<module>persistence</module>
+	</modules>
 
 	<properties>
 		<h2.version>1.4.181</h2.version>
