@@ -9,6 +9,7 @@
 	<description>Home for all your contacts</description>
 	<modules>
 		<module>persistence</module>
+		<module>business</module>
 	</modules>
 
 	<properties>
