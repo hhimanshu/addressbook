@@ -3,7 +3,6 @@ package com.learner.business.presentation;
 import com.learner.persistence.entities.Phone;
 
 import javax.annotation.Nonnull;
-import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -32,16 +31,16 @@ public class PhonePresentation {
         phoneFormat = phoneFormatBuilder.toString();
     }
 
+    @Nonnull
+    public static List<PhonePresentation> getPhonePresentations(@Nonnull final List<Phone> phones) {
+        return phones.stream().map(PhonePresentation::new).collect(Collectors.toList());
+    }
+
     @Override
     public String toString() {
         return "PhonePresentation{" +
                 "id='" + id + '\'' +
                 ", phoneFormat='" + phoneFormat + '\'' +
                 '}';
-    }
-
-    @Nonnull
-    public static Collection<? extends PhonePresentation> getPhonePresentations(@Nonnull final List<Phone> phones) {
-        return phones.stream().map(PhonePresentation::new).collect(Collectors.toList());
     }
 }

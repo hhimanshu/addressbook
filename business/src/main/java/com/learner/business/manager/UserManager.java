@@ -1,28 +1,28 @@
 package com.learner.business.manager;
 
+import com.learner.business.presentation.UserPresentation;
 import com.learner.persistence.UserQueries;
 import com.learner.persistence.configuration.CrudService;
-import com.learner.persistence.entities.User;
 
 import javax.annotation.Nonnull;
 import javax.inject.Inject;
 import java.util.List;
 
 public class UserManager {
-	private final UserQueries userQueries;
+    private final CrudService crudService;
 
 	@Inject
 	public UserManager(@Nonnull final CrudService crudService) {
-		userQueries = new UserQueries(crudService);
+        this.crudService = crudService;
+    }
+
+	@Nonnull
+	public List<UserPresentation> getUsersByState(@Nonnull final String state) {
+		return UserPresentation.getUserPresentations(new UserQueries(crudService).getUserByState(state));
 	}
 
 	@Nonnull
-	public List<User> getUsersByState(@Nonnull final String state) {
-		return userQueries.getUserByState(state);
-	}
-
-	@Nonnull
-	public List<User> getUsersByPhoneAreaCode(final int phoneAreaCode) {
-		return userQueries.getUserByPhoneAreaCode(phoneAreaCode);
+	public List<UserPresentation> getUsersByPhoneAreaCode(final int phoneAreaCode) {
+		return UserPresentation.getUserPresentations(new UserQueries(crudService).getUserByPhoneAreaCode(phoneAreaCode));
 	}
 }
