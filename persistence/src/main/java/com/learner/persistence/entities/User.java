@@ -5,6 +5,7 @@ import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
@@ -17,11 +18,11 @@ public class User {
 	private String lastName;
 	private String nickName;
 	@ElementCollection
-	private List<String> emails;
+	private final List<String> emails = new ArrayList<>();
 	@OneToMany
-	private List<Address> addresses;
+	private final List<Address> addresses = new ArrayList<>();
 	@OneToMany
-	private List<Phone> phones;
+	private final List<Phone> phones = new ArrayList<>();
 
 	public User(@Nonnull final String firstName, @Nonnull final String lastName) {
 		id = UUID.randomUUID().toString();
