@@ -8,11 +8,11 @@ import java.util.UUID;
 @Entity
 public class Phone {
 	@Id
-	private final String id;
-	private final int countryCode;
-	private final int areaCode;
-	private final int number;
-	private final PhoneNumberType phoneNumberType;
+	private String id;
+	private int countryCode;
+	private int areaCode;
+	private int number;
+	private PhoneNumberType phoneNumberType;
 
 	public Phone(final int countryCode, final int areaCode, final int number) {
 		id = UUID.randomUUID().toString();
@@ -29,6 +29,10 @@ public class Phone {
 		this.areaCode = areaCode;
 		this.number = number;
 		this.phoneNumberType = phoneNumberType;
+	}
+
+	protected Phone() {
+		// required by JPA
 	}
 
 	@Nonnull
