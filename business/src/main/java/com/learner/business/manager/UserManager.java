@@ -5,13 +5,20 @@ import com.learner.persistence.UserQueries;
 import com.learner.persistence.configuration.CrudService;
 
 import javax.annotation.Nonnull;
+import javax.ejb.Stateless;
 import javax.inject.Inject;
 import java.util.List;
 
+@Stateless
 public class UserManager {
-    private final CrudService crudService;
+    private CrudService crudService;
 
-	@Inject
+    @SuppressWarnings("UnusedDeclaration")
+    public UserManager() {
+
+    }
+
+    @Inject
 	public UserManager(@Nonnull final CrudService crudService) {
         this.crudService = crudService;
     }

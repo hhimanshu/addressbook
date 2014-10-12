@@ -13,7 +13,11 @@ import java.util.List;
 
 @Path("users")
 public class UserResource {
-    private final UserManager userManager;
+    private UserManager userManager;
+
+    @SuppressWarnings("UnusedDeclaration")
+    public UserResource() {
+    }
 
     @Inject
     public UserResource(@Nonnull final UserManager userManager) {
