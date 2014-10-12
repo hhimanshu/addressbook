@@ -12,6 +12,7 @@
 		<guava.version>18.0</guava.version>
 		<hibernate-core.version>4.3.6.Final</hibernate-core.version>
 		<hibernate-jpa-2.0-api.version>1.0.1.Final</hibernate-jpa-2.0-api.version>
+		<liquibase-core.version>3.1.1</liquibase-core.version>
 		<maven-apt-plugin.version>0.3.2</maven-apt-plugin.version>
 		<maven-jar-plugin.version>2.2</maven-jar-plugin.version>
 		<querydsl.version>3.4.3</querydsl.version>
@@ -68,6 +69,11 @@
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
 			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.liquibase</groupId>
+			<artifactId>liquibase-core</artifactId>
+			<version>${liquibase-core.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.h2database</groupId>

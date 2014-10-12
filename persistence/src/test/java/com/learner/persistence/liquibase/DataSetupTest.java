@@ -1,0 +1,43 @@
+package com.learner.persistence.liquibase;
+
+import com.learner.persistence.harness.JpaRule;
+import liquibase.Liquibase;
+import liquibase.database.jvm.JdbcConnection;
+import liquibase.exception.LiquibaseException;
+import liquibase.resource.ClassLoaderResourceAccessor;
+import org.hibernate.Session;
+import org.hibernate.engine.jdbc.connections.spi.ConnectionProvider;
+import org.hibernate.engine.spi.SessionFactoryImplementor;
+import org.junit.Rule;
+import org.junit.Test;
+
+import javax.annotation.Nonnull;
+import javax.persistence.EntityManager;
+import java.sql.Connection;
+import java.sql.SQLException;
+
+public class DataSetupTest {
+    @Rule
+    public JpaRule jpaRule = new JpaRule("unit-testing-pu");
+
+    @Test
+    public void testDataSetup() throws SQLException, LiquibaseException {
+        runLiquibaseUpdate(jpaRule);
+    }
+
+    public static void runLiquibaseUpdate(@Nonnull final JpaRule jpaRule) throws LiquibaseException, SQLException {
+        final Liquibase liquibase = new Liquibase("liquibase/changelog.xml",
+                new ClassLoaderResourceAccessor(),
+                new JdbcConnection(getConnection(jpaRule.getEntityManager())));
+        liquibase.dropAll();
+        liquibase.update("");
+    }
+
+    @Nonnull
+    private static Connection getConnection(@Nonnull final EntityManager em) throws SQLException {
+        final Session session = em.unwrap(Session.class);
+        final SessionFactoryImplementor sfi = (SessionFactoryImplementor) session.getSessionFactory();
+        final ConnectionProvider cp = sfi.getConnectionProvider();
+        return cp.getConnection();
+    }
+}
