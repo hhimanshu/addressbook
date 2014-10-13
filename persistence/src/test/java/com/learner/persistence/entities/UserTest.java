@@ -1,10 +1,9 @@
 package com.learner.persistence.entities;
 
-import org.junit.Test;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
+import org.junit.Test;
 
 public class UserTest extends AbstractUnitTest {
 	@Test
@@ -67,9 +66,6 @@ public class UserTest extends AbstractUnitTest {
 
 			user.addPhone(phone1);
 			user.addPhone(phone2);
-			crudService.create(phone1);
-			crudService.create(phone2);
-			jpaRule.changeTransaction();
 
 			crudService.create(user);
 			jpaRule.changeTransaction();
@@ -89,19 +85,17 @@ public class UserTest extends AbstractUnitTest {
 			user = new User("Steve", "Jobs");
 			Address address1 = new Address("1 Infinite Loop", null, "Cupertino", "California", 94105, "USA");
 			Address address2 = new Address("2855 Stevens Creek Blvd", "#1025", "Santa Clara", "California", 95050, "USA");
-			crudService.create(address1);
-			crudService.create(address2);
-			jpaRule.changeTransaction();
 
 			user.addAddress(address1);
 			user.addAddress(address2);
+
 			crudService.create(user);
 			jpaRule.changeTransaction();
 		}
 		{
 			final User userInDb = crudService.find(user.getId(), User.class);
 			assertNotNull(userInDb);
-			assertEquals("Two phones not present", 2, userInDb.getAddresses().size());
+			assertEquals("Two address not present", 2, userInDb.getAddresses().size());
 			assertEquals(user, userInDb);
 		}
 	}

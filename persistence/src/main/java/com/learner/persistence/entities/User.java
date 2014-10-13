@@ -1,14 +1,16 @@
 package com.learner.persistence.entities;
 
-import javax.annotation.Nonnull;
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
+
+import javax.annotation.Nonnull;
+import javax.persistence.CascadeType;
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class User {
@@ -19,9 +21,9 @@ public class User {
 	private String nickName;
 	@ElementCollection
 	private final List<String> emails = new ArrayList<>();
-	@OneToMany
+	@OneToMany(cascade = CascadeType.ALL)
 	private final List<Address> addresses = new ArrayList<>();
-	@OneToMany
+	@OneToMany(cascade = CascadeType.ALL)
 	private final List<Phone> phones = new ArrayList<>();
 
 	public User(@Nonnull final String firstName, @Nonnull final String lastName) {
