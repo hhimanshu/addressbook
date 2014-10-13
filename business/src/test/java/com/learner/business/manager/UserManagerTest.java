@@ -1,15 +1,16 @@
 package com.learner.business.manager;
 
+import static org.junit.Assert.assertEquals;
+
+import java.util.List;
+
+import org.junit.Test;
+
 import com.learner.business.presentation.UserPresentation;
 import com.learner.persistence.entities.AbstractUnitTest;
 import com.learner.persistence.entities.Address;
 import com.learner.persistence.entities.Phone;
 import com.learner.persistence.entities.User;
-import org.junit.Test;
-
-import java.util.List;
-
-import static org.junit.Assert.assertEquals;
 
 public class UserManagerTest extends AbstractUnitTest {
 
@@ -17,14 +18,10 @@ public class UserManagerTest extends AbstractUnitTest {
     public void testGetUserPresentationsByState() {
         final User steveJobs;
         {
-            final Address address = new Address("1 infinite loop", null, "Cupertino", "California", 95014, "USA");
-            crudService.create(address);
-            jpaRule.changeTransaction();
-
-            steveJobs = new User("Steve", "Jobs");
-            steveJobs.addAddress(address);
-            crudService.create(steveJobs);
-            jpaRule.changeTransaction();
+	        steveJobs = new User("Steve", "Jobs");
+	        final Address address = new Address("1 infinite loop", null, "Cupertino", "California", 95014, "USA", steveJobs);
+	        crudService.create(address);
+	        jpaRule.changeTransaction();
         }
 
         final List<UserPresentation> userPresentationsByState = new UserManager(crudService).getUsersByState("California");
@@ -42,14 +39,10 @@ public class UserManagerTest extends AbstractUnitTest {
     public void testGetUserPresentationsByPhoneAreaCode() {
         final User steveJobs;
         {
-            final Phone phone = new Phone(1, 650, 2345678);
-            crudService.create(phone);
-            jpaRule.changeTransaction();
-
-            steveJobs = new User("Steve", "Jobs");
-            steveJobs.addPhone(phone);
-            crudService.create(steveJobs);
-            jpaRule.changeTransaction();
+	        steveJobs = new User("Steve", "Jobs");
+	        final Phone phone = new Phone(1, 650, 2345678, steveJobs);
+	        crudService.create(phone);
+	        jpaRule.changeTransaction();
         }
 
         final List<UserPresentation> userPresentationsByPhoneAreaCode = new UserManager(crudService).getUsersByPhoneAreaCode(650);

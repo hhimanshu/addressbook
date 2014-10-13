@@ -1,9 +1,12 @@
 package com.learner.persistence.entities;
 
+import java.util.UUID;
+
 import javax.annotation.Nonnull;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import java.util.UUID;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Phone {
@@ -13,18 +16,21 @@ public class Phone {
 	private int areaCode;
 	private int number;
 	private PhoneNumberType phoneNumberType;
+	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH })
+	private User user;
 
-	public Phone(final int countryCode, final int areaCode, final int number) {
-		this(countryCode, areaCode, number, PhoneNumberType.HOME);
+	public Phone(final int countryCode, final int areaCode, final int number, @Nonnull final User user) {
+		this(countryCode, areaCode, number, PhoneNumberType.HOME, user);
 	}
 
 	public Phone(final int countryCode, final int areaCode, final int number,
-	             @Nonnull final PhoneNumberType phoneNumberType) {
+	             @Nonnull final PhoneNumberType phoneNumberType, @Nonnull final User user) {
 		id = UUID.randomUUID().toString();
 		this.countryCode = countryCode;
 		this.areaCode = areaCode;
 		this.number = number;
 		this.phoneNumberType = phoneNumberType;
+		this.user = user;
 	}
 
 	protected Phone() {
@@ -51,6 +57,11 @@ public class Phone {
 	@Nonnull
 	public PhoneNumberType getPhoneNumberType() {
 		return phoneNumberType;
+	}
+
+	@Nonnull
+	public User getUser() {
+		return user;
 	}
 
 	@Override

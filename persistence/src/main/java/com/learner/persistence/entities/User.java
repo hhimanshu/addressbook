@@ -19,11 +19,14 @@ public class User {
 	private String firstName;
 	private String lastName;
 	private String nickName;
+
 	@ElementCollection
 	private final List<String> emails = new ArrayList<>();
-	@OneToMany(cascade = CascadeType.ALL)
+
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
 	private final List<Address> addresses = new ArrayList<>();
-	@OneToMany(cascade = CascadeType.ALL)
+
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
 	private final List<Phone> phones = new ArrayList<>();
 
 	public User(@Nonnull final String firstName, @Nonnull final String lastName) {
@@ -87,4 +90,18 @@ public class User {
 	}
 
 	// likewise remove address, phones, emails could be added
+
+
+	@Override
+	public String toString() {
+		return "User{" +
+				"id='" + id + '\'' +
+				", firstName='" + firstName + '\'' +
+				", lastName='" + lastName + '\'' +
+				", nickName='" + nickName + '\'' +
+				", emails=" + emails +
+				", addresses=" + addresses +
+				", phones=" + phones +
+				'}';
+	}
 }

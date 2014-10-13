@@ -30,22 +30,25 @@ public class UserQueriesTest extends AbstractUnitTest {
 	public void testGetUserByState() throws Exception {
 		final User billGates;
 		{
-			billGates = crudService.create(new User("Bill", "Gates"));
-			billGates.addAddress(new Address("One Microsoft Way", null, "Redmond", "Washington", 98052, "USA"));
+			billGates = new User("Bill", "Gates");
+			final Address address1 = new Address("One Microsoft Way", null, "Redmond", "Washington", 98052, "USA", billGates);
+			crudService.create(address1);
 			jpaRule.changeTransaction();
 		}
 
 		final User steveJobs;
 		{
-			steveJobs = crudService.create(new User("Steve", "Jobs"));
-			steveJobs.addAddress(new Address("1 infinite loop", null, "Cupertino", "California", 95014, "USA"));
+			steveJobs = new User("Steve", "Jobs");
+			final Address address2 = new Address("1 infinite loop", null, "Cupertino", "California", 95014, "USA", steveJobs);
+			crudService.create(address2);
 			jpaRule.changeTransaction();
 		}
 
 		final User elonMusk;
 		{
-			elonMusk = crudService.create(new User("Elon", "Musk"));
-			elonMusk.addAddress(new Address("45500 Fremont Blvd", null, "Fremont", "California", 94538, "USA"));
+			elonMusk = new User("Elon", "Musk");
+			final Address address3 = new Address("45500 Fremont Blvd", null, "Fremont", "California", 94538, "USA", elonMusk);
+			crudService.create(address3);
 			jpaRule.changeTransaction();
 		}
 
@@ -69,14 +72,16 @@ public class UserQueriesTest extends AbstractUnitTest {
 	public void testGetUsersByPhoneAreaCode() {
 		final User billGates;
 		{
-			billGates = crudService.create(new User("Bill", "Gates"));
-			billGates.addPhone(new Phone(1, 425, 8828080));
+			billGates = new User("Bill", "Gates");
+			final Phone phone = new Phone(1, 425, 8828080, billGates);
+			crudService.create(phone);
 			jpaRule.changeTransaction();
 		}
 		final User steveJobs;
 		{
-			steveJobs = crudService.create(new User("Steve", "Jobs"));
-			steveJobs.addPhone(new Phone(1, 408, 9961010));
+			steveJobs = new User("Steve", "Jobs");
+			final Phone phone = new Phone(1, 408, 9961010, steveJobs);
+			crudService.create(phone);
 			jpaRule.changeTransaction();
 		}
 
