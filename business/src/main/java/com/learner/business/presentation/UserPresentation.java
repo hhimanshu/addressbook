@@ -13,7 +13,7 @@ public class UserPresentation {
     private String firstName;
     private String lastName;
     private String nickName;
-    private final List<String> emails = new ArrayList<>();
+    private final String email;
     private final List<PhonePresentation> phonePresentations = new ArrayList<>();
     private final List<AddressPresentation> addressPresentations = new ArrayList<>();
 
@@ -22,7 +22,7 @@ public class UserPresentation {
         firstName = user.getFirstName();
         lastName = user.getLastName();
         nickName = user.getNickName();
-        emails.addAll(user.getEmails());
+        email = user.getEmail();
         phonePresentations.addAll(PhonePresentation.getPhonePresentations(user.getPhones()));
         addressPresentations.addAll(AddressPresentation.getAddressPresentations(user.getAddresses()));
     }
@@ -53,11 +53,6 @@ public class UserPresentation {
     }
 
     @Nonnull
-    public List<String> getEmails() {
-        return emails;
-    }
-
-    @Nonnull
     public List<PhonePresentation> getPhonePresentations() {
         return phonePresentations;
     }
@@ -67,6 +62,11 @@ public class UserPresentation {
         return addressPresentations;
     }
 
+    @Nullable
+    public String getEmail() {
+        return email;
+    }
+
     @Override
     public String toString() {
         return "UserPresentation{" +
@@ -74,7 +74,7 @@ public class UserPresentation {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", nickName='" + nickName + '\'' +
-                ", emails=" + emails +
+                ", email=" + email +
                 ", phonePresentations=" + phonePresentations +
                 ", addressPresentations=" + addressPresentations +
                 '}';

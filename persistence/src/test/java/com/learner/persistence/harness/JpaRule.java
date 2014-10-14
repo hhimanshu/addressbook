@@ -19,7 +19,7 @@ public class JpaRule extends ExternalResource {
 	private EntityManagerFactory emFactory;
 	private final String persistenceUnitName;
 
-	public static class Derby {
+	public static class H2 {
 		/**
 		 * Starts and connects to an in-memory embedded instance of derby
 		 */
@@ -36,7 +36,7 @@ public class JpaRule extends ExternalResource {
 	 * @param persistenceUnitName the name of the persistence unit to load
 	 */
 	public JpaRule(@Nonnull final String persistenceUnitName) {
-		dataSourceDefinition = Derby.memory;
+		dataSourceDefinition = H2.memory;
 		this.persistenceUnitName = persistenceUnitName;
 	}
 

@@ -1,10 +1,8 @@
 package com.learner.persistence.entities;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-
 import org.junit.Test;
+
+import static org.junit.Assert.*;
 
 public class UserTest extends AbstractUnitTest {
 	@Test
@@ -43,16 +41,13 @@ public class UserTest extends AbstractUnitTest {
 	public void testAddUserWithEmail() {
 		final User user;
 		{
-			user = new User("Steve", "Jobs");
-			user.addEmail("steve@apple.com");
-			user.addEmail("steve@gmail.com");
+			user = new User("Steve", "Jobs", "steve@apple.com");
 			crudService.create(user);
 			jpaRule.changeTransaction();
 		}
 		{
 			final User userInDb = crudService.find(user.getId(), User.class);
 			assertNotNull(userInDb);
-			assertEquals("Two emails not present", 2, userInDb.getEmails().size());
 			assertEquals(user, userInDb);
 		}
 	}
