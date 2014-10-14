@@ -1,0 +1,78 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="harit" id="10112014.2003">
+        <comment>Insert into User Table</comment>
+        <insert tableName="user">
+            <column name="id" value="b3db0c8e-77a4-4645-9dd5-da03f9fc1cd5"/>
+            <column name="firstName" value="Steve"/>
+            <column name="lastName" value="Jobs"/>
+            <column name="nickName" value="steve"/>
+            <column name="email" value="steve@gmail.com"/>
+        </insert>
+        <insert tableName="user">
+            <column name="id" value="b1ff46cf-3242-4219-8099-1abcbe6903b7"/>
+            <column name="firstName" value="Bill"/>
+            <column name="lastName" value="Gates"/>
+            <column name="nickName" value="bill"/>
+            <column name="email" value="bill@microsoft.com"/>
+        </insert>
+
+        <comment>Insert into Phone Table</comment>
+        <!-- 2 Phones for Steve -->
+        <insert tableName="phone">
+            <column name="id" value="0668a3f2-5a3a-440f-a5a6-cbfab9a02979"/>
+            <column name="countryCode" valueNumeric="1"/>
+            <column name="areaCode" valueNumeric="650"/>
+            <column name="number" valueNumeric="2345678"/>
+            <column name="user" value="b3db0c8e-77a4-4645-9dd5-da03f9fc1cd5"/>
+            <column name="phoneNumberType" value="CELL"/>
+        </insert>
+        <insert tableName="phone">
+            <column name="id" value="9bca911c-b670-4df2-a8d1-50f3f068ceec"/>
+            <column name="countryCode" valueNumeric="1"/>
+            <column name="areaCode" valueNumeric="650"/>
+            <column name="number" valueNumeric="5512150"/>
+            <column name="user" value="b3db0c8e-77a4-4645-9dd5-da03f9fc1cd5"/>
+            <column name="phoneNumberType" value="WORK"/>
+        </insert>
+
+        <!-- 1 Phone for Bill -->
+        <insert tableName="phone">
+            <column name="id" value="e7e3f0c1-3070-475c-ab59-66cecaaf356d"/>
+            <column name="countryCode" valueNumeric="1"/>
+            <column name="areaCode" valueNumeric="202"/>
+            <column name="number" valueNumeric="2635900"/>
+            <column name="user" value="b1ff46cf-3242-4219-8099-1abcbe6903b7"/>
+            <column name="phoneNumberType" value="HOME"/>
+        </insert>
+
+        <comment>Inset into Adress Table</comment>
+        <insert tableName="address">
+            <!-- 1 address for steve -->
+            <column name="id" value="0d85676a-aa69-48bc-bea4-c784685df4a9"/>
+            <column name="streetName" value="1 Infinite Loop"/>
+            <column name="additionalStreetName" value="#100"/>
+            <column name="city" value="Cupertino"/>
+            <column name="state" value="California"/>
+            <column name="country" value="USA"/>
+            <column name="zip" valueNumeric="95104"/>
+            <column name="addressType" value="WORK"/>
+            <column name="user" value="b3db0c8e-77a4-4645-9dd5-da03f9fc1cd5"/>
+        </insert>
+        <insert tableName="address">
+            <!-- 1 address for bill -->
+            <column name="id" value="2cbb60ae-6fd5-4d89-aeea-77e8050d4b4e"/>
+            <column name="streetName" value="901 K St NW"/>
+            <column name="additionalStreetName" value="#11"/>
+            <column name="city" value="Washington DC"/>
+            <column name="state" value="Washington"/>
+            <column name="country" value="USA"/>
+            <column name="zip" valueNumeric="20001"/>
+            <column name="addressType" value="WORK"/>
+            <column name="user" value="b1ff46cf-3242-4219-8099-1abcbe6903b7"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

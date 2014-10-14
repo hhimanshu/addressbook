@@ -16,6 +16,7 @@
 				<constraints nullable="false"/>
 			</column>
 			<column name="nickName" type="VARCHAR(50)"/>
-		</createTable>
+            <column name="email" type="VARCHAR(1000)"/>
+        </createTable>
 	</changeSet>
 </databaseChangeLog>

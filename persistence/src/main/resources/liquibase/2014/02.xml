@@ -27,8 +27,8 @@
 			<column name="areaCode"/>
 		</createIndex>
 		<addForeignKeyConstraint
-				baseTableName="user" baseColumnNames="id"
+                baseTableName="phone" baseColumnNames="user"
 				constraintName="userPhoneForeignKeyConstraint"
-				referencedTableName="phone" referencedColumnNames="user"/>
-	</changeSet>
+                referencedTableName="user" referencedColumnNames="id"/>
+    </changeSet>
 </databaseChangeLog>

@@ -34,8 +34,8 @@
             <column name="state"/>
         </createIndex>
 	    <addForeignKeyConstraint
-			    baseTableName="user" baseColumnNames="id"
+                baseTableName="address" baseColumnNames="user"
 			    constraintName="userAddressForeignKeyConstraint"
-			    referencedTableName="address" referencedColumnNames="user"/>
+                referencedTableName="user" referencedColumnNames="id"/>
     </changeSet>
 </databaseChangeLog>
