@@ -1,13 +1,9 @@
 package com.learner.persistence.entities;
 
-import java.util.UUID;
-
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
+import java.util.UUID;
 
 @Entity
 public class Address {
@@ -19,7 +15,8 @@ public class Address {
 	private String state;
 	private int zip;
 	private String country;
-	private AddressType addressType;
+    @Enumerated(EnumType.STRING)
+    private AddressType addressType;
 	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH })
 	private User user;
 

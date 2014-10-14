@@ -28,13 +28,13 @@
             <column name="addressType" type="VARCHAR(20)">
                 <constraints nullable="false"/>
             </column>
-	        <column name="user" type="VARCHAR(36)"/>
+            <column name="user_id" type="VARCHAR(36)"/>
         </createTable>
         <createIndex tableName="address" indexName="stateIndex">
             <column name="state"/>
         </createIndex>
 	    <addForeignKeyConstraint
-                baseTableName="address" baseColumnNames="user"
+                baseTableName="address" baseColumnNames="user_id"
 			    constraintName="userAddressForeignKeyConstraint"
                 referencedTableName="user" referencedColumnNames="id"/>
     </changeSet>

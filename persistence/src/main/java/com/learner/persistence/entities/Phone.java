@@ -1,12 +1,8 @@
 package com.learner.persistence.entities;
 
-import java.util.UUID;
-
 import javax.annotation.Nonnull;
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
+import java.util.UUID;
 
 @Entity
 public class Phone {
@@ -15,7 +11,8 @@ public class Phone {
 	private int countryCode;
 	private int areaCode;
 	private int number;
-	private PhoneNumberType phoneNumberType;
+    @Enumerated(EnumType.STRING)
+    private PhoneNumberType phoneNumberType;
 	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH })
 	private User user;
 

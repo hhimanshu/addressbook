@@ -27,7 +27,7 @@
             <column name="countryCode" valueNumeric="1"/>
             <column name="areaCode" valueNumeric="650"/>
             <column name="number" valueNumeric="2345678"/>
-            <column name="user" value="b3db0c8e-77a4-4645-9dd5-da03f9fc1cd5"/>
+            <column name="user_id" value="b3db0c8e-77a4-4645-9dd5-da03f9fc1cd5"/>
             <column name="phoneNumberType" value="CELL"/>
         </insert>
         <insert tableName="phone">
@@ -35,7 +35,7 @@
             <column name="countryCode" valueNumeric="1"/>
             <column name="areaCode" valueNumeric="650"/>
             <column name="number" valueNumeric="5512150"/>
-            <column name="user" value="b3db0c8e-77a4-4645-9dd5-da03f9fc1cd5"/>
+            <column name="user_id" value="b3db0c8e-77a4-4645-9dd5-da03f9fc1cd5"/>
             <column name="phoneNumberType" value="WORK"/>
         </insert>
 
@@ -45,11 +45,11 @@
             <column name="countryCode" valueNumeric="1"/>
             <column name="areaCode" valueNumeric="202"/>
             <column name="number" valueNumeric="2635900"/>
-            <column name="user" value="b1ff46cf-3242-4219-8099-1abcbe6903b7"/>
+            <column name="user_id" value="b1ff46cf-3242-4219-8099-1abcbe6903b7"/>
             <column name="phoneNumberType" value="HOME"/>
         </insert>
 
-        <comment>Inset into Adress Table</comment>
+        <comment>Inset into Address Table</comment>
         <insert tableName="address">
             <!-- 1 address for steve -->
             <column name="id" value="0d85676a-aa69-48bc-bea4-c784685df4a9"/>
@@ -60,7 +60,7 @@
             <column name="country" value="USA"/>
             <column name="zip" valueNumeric="95104"/>
             <column name="addressType" value="WORK"/>
-            <column name="user" value="b3db0c8e-77a4-4645-9dd5-da03f9fc1cd5"/>
+            <column name="user_id" value="b3db0c8e-77a4-4645-9dd5-da03f9fc1cd5"/>
         </insert>
         <insert tableName="address">
             <!-- 1 address for bill -->
@@ -72,7 +72,7 @@
             <column name="country" value="USA"/>
             <column name="zip" valueNumeric="20001"/>
             <column name="addressType" value="WORK"/>
-            <column name="user" value="b1ff46cf-3242-4219-8099-1abcbe6903b7"/>
+            <column name="user_id" value="b1ff46cf-3242-4219-8099-1abcbe6903b7"/>
         </insert>
     </changeSet>
 </databaseChangeLog>

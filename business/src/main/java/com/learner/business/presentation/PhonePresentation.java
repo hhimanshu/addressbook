@@ -1,6 +1,7 @@
 package com.learner.business.presentation;
 
 import com.learner.persistence.entities.Phone;
+import com.learner.persistence.entities.PhoneNumberType;
 
 import javax.annotation.Nonnull;
 import java.util.List;
@@ -8,10 +9,12 @@ import java.util.stream.Collectors;
 
 public class PhonePresentation {
     private String id;
-    private String phoneFormat;
+    private String phone;
+    private PhoneNumberType phoneNumberType;
 
     public PhonePresentation(@Nonnull final Phone phone) {
         id = phone.getId();
+        phoneNumberType = phone.getPhoneNumberType();
         final StringBuilder phoneFormatBuilder = new StringBuilder();
 
         // build country code
@@ -28,7 +31,7 @@ public class PhonePresentation {
         phoneFormatBuilder.append(numberAsString.substring(0, 3)).append("-");
         phoneFormatBuilder.append(numberAsString.substring(3, numberAsString.length()));
 
-        phoneFormat = phoneFormatBuilder.toString();
+        this.phone = phoneFormatBuilder.toString();
     }
 
     @Nonnull
@@ -42,15 +45,21 @@ public class PhonePresentation {
     }
 
     @Nonnull
-    public String getPhoneFormat() {
-        return phoneFormat;
+    public String getPhone() {
+        return phone;
+    }
+
+    @Nonnull
+    public PhoneNumberType getPhoneNumberType() {
+        return phoneNumberType;
     }
 
     @Override
     public String toString() {
         return "PhonePresentation{" +
                 "id='" + id + '\'' +
-                ", phoneFormat='" + phoneFormat + '\'' +
+                ", phone='" + phone + '\'' +
+                ", phoneNumberType=" + phoneNumberType +
                 '}';
     }
 }
