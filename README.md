@@ -6,7 +6,7 @@ addressbook [![Build Status](https://api.shippable.com/projects/543cab097a7fb11e
 - [H2 Database](h2database.com)  
 - [Maven](maven.apache.org)  
 - [Cargo](http://cargo.codehaus.org/Maven2+plugin)  
-- [Liquibase](maven.apache.org)  
+- [Liquibase](http://www.liquibase.org/)  
 
 ###### How to run  
 - Clone this repository  
