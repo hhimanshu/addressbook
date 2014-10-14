@@ -3,8 +3,8 @@ addressbook [![Build Status](https://api.shippable.com/projects/543cab097a7fb11e
 ###### This project is cooked with following ingredients    
 - [Java 8](http://docs.oracle.com/javase/8/)  
 - [Java EE7](http://docs.oracle.com/javaee/7/tutorial/doc/home.htm)  
-- [H2 Database](h2database.com)  
-- [Maven](maven.apache.org)  
+- [H2 Database](http://h2database.com)  
+- [Maven](http://maven.apache.org)  
 - [Cargo](http://cargo.codehaus.org/Maven2+plugin)  
 - [Liquibase](http://www.liquibase.org/)  
 
